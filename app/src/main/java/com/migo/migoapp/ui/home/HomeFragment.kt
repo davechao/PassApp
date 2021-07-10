@@ -22,7 +22,8 @@ class HomeFragment : BaseFragment() {
                 is Loading -> {
                     tv_network_status.text =
                         getString(R.string.network_status_connecting)
-                    tv_network_message.text = getString(R.string.network_status_waiting)
+                    tv_network_message.text =
+                        getString(R.string.network_status_waiting)
                 }
                 is Loaded -> {
                     // DO-Nothing
@@ -42,6 +43,8 @@ class HomeFragment : BaseFragment() {
         })
 
         viewModel.getApiStatus()
+
+        viewModel.getAllPass()
 
 //        rv_wallet.also {
 //            it.setHasFixedSize(true)

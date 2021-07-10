@@ -2,9 +2,10 @@ package com.migo.migoapp.model.repository
 
 import com.migo.migoapp.model.api.ApiService
 import com.migo.migoapp.model.api.vo.ApiStatusItem
-import com.migo.migoapp.model.emuns.ApiEnv
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import retrofit2.HttpException
 
 class ApiRepository constructor(private val apiService: ApiService) {
@@ -14,6 +15,6 @@ class ApiRepository constructor(private val apiService: ApiService) {
             val result = apiService.getPublicStatus()
             if (!result.isSuccessful) throw HttpException(result)
             emit(result.body())
-        }
+        }.flowOn(Dispatchers.IO)
     }
 }

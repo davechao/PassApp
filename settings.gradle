@@ -1,0 +1,2 @@
+rootProject.name = "MigoApp"
+include ':app'

@@ -35,10 +35,11 @@
 
     <TextView
         android:id="@+id/tv_network_message"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="8dp"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/tv_network_message_title"
         app:layout_constraintTop_toBottomOf="@+id/tv_network_status_title" />
 

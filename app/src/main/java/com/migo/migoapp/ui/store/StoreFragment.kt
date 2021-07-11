@@ -8,7 +8,6 @@ import com.migo.migoapp.ui.base.BaseFragment
 import com.migo.migoapp.widget.utility.GeneralUtils
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_store.*
-import timber.log.Timber
 
 @AndroidEntryPoint
 class StoreFragment : BaseFragment() {
@@ -26,8 +25,8 @@ class StoreFragment : BaseFragment() {
             )
         }
 
-        viewModel.savePass.observe(viewLifecycleOwner, {
-            GeneralUtils.showToast(requireContext(), getString(R.string.buy_success))
+        viewModel.buyPass.observe(viewLifecycleOwner, {
+            GeneralUtils.showToast(requireContext(), "${getString(R.string.purchase)} ${it.name}")
         })
     }
 
@@ -37,10 +36,7 @@ class StoreFragment : BaseFragment() {
 
     private val storeFuncListener by lazy {
         StoreFuncListener(
-            onBuyClick = {
-                it.id = GeneralUtils.generateId()
-                viewModel.savePass(it)
-            }
+            onBuyClick = { viewModel.buyPass(it) }
         )
     }
 }

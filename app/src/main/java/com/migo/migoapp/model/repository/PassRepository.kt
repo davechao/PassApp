@@ -88,10 +88,17 @@ class PassRepository constructor(db: AppDb) {
         }.flowOn(Dispatchers.IO)
     }
 
-    suspend fun savePass(pass: Pass): Flow<Nothing?> {
+    suspend fun buyPass(pass: Pass): Flow<Pass?> {
         return flow {
             passDao.insertPass(pass)
-            emit(null)
+            emit(pass)
+        }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun activateMyPass(pass: Pass): Flow<Pass?> {
+        return flow {
+            passDao.update(pass)
+            emit(pass)
         }.flowOn(Dispatchers.IO)
     }
 }

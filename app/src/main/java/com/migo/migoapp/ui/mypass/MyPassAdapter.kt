@@ -8,7 +8,7 @@ import com.migo.migoapp.model.db.vo.Pass
 import com.migo.migoapp.ui.viewholder.PassViewHolder
 
 class MyPassAdapter(
-    private val passes: List<Pass>,
+    private val passes: ArrayList<Pass>,
     private val funcListener: MyPassFuncListener
 )  : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -20,17 +20,31 @@ class MyPassAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val pass = passes[position]
+
         holder as PassViewHolder
         holder.passName.text = pass.name
         holder.passPrice.text = pass.price
-        holder.passBtn.also {
-            it.text = holder.passBtn.context.getString(R.string.activate)
-            it.setOnClickListener { funcListener.onActivateClick(pass) }
+
+        if (pass.isActivate) {
+            holder.passBtn.text = holder.passBtn.context.getString(R.string.activated)
+        } else {
+            holder.passBtn.text = holder.passBtn.context.getString(R.string.activate)
         }
+
+        holder.passBtn.setOnClickListener {
+            pass.isActivate = true
+            funcListener.onActivateClick(position, pass)
+        }
+
         holder.passLayout.setOnClickListener { funcListener.onDetailClick(pass) }
     }
 
     override fun getItemCount(): Int {
         return passes.size
+    }
+
+    fun updatePassStatus(pos: Int, pass: Pass) {
+        passes[pos] = pass
+        notifyItemChanged(pos)
     }
 }

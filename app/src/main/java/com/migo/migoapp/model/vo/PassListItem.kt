@@ -5,5 +5,5 @@ import com.migo.migoapp.model.emuns.PassTitleType
 
 data class PassListItem(
     val title: PassTitleType,
-    val passes: List<Pass> = arrayListOf()
+    val passes: ArrayList<Pass> = arrayListOf()
 )

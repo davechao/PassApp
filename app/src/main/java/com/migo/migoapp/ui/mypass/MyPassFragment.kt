@@ -5,8 +5,6 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import com.migo.migoapp.R
 import com.migo.migoapp.ui.base.BaseFragment
-import com.migo.migoapp.ui.store.StoreFuncListener
-import com.migo.migoapp.widget.utility.GeneralUtils
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_my_pass.*
 import timber.log.Timber
@@ -32,7 +30,16 @@ class MyPassFragment : BaseFragment() {
         })
 
         viewModel.myPass.observe(viewLifecycleOwner, {
+            if (it.isEmpty()) {
+                tv_empty_pass.visibility = View.VISIBLE
+            } else {
+                tv_empty_pass.visibility = View.GONE
+            }
             myPassGroupAdapter.setupData(it)
+        })
+
+        viewModel.activateMyPass.observe(viewLifecycleOwner, {
+            myPassGroupAdapter.updatePassStatus(viewModel.getActivatePassPos(), it)
         })
     }
 
@@ -42,8 +49,8 @@ class MyPassFragment : BaseFragment() {
 
     private val myPassFuncListener by lazy {
         MyPassFuncListener(
-            onActivateClick = {
-                Timber.d("@@onActivateClick...")
+            onActivateClick = { pos, pass ->
+                viewModel.activateMyPass(pos, pass)
             },
             onDetailClick = {
                 Timber.d("@@onDetailClick...")

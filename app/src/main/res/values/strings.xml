@@ -10,8 +10,11 @@
     <string name="tab_store">Store</string>
     <string name="tab_my_pass">My Pass</string>
 
+    <string name="empty_pass">Empty Pass</string>
     <string name="buy">BUY</string>
-    <string name="buy_success">Purchase successful</string>
+    <string name="purchase">Purchase</string>
     <string name="activate">ACTIVATE</string>
+    <string name="activated">ACTIVATED</string>
+    <string name="activate_success">Activate successful</string>
 
 </resources>

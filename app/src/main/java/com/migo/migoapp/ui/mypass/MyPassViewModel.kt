@@ -20,10 +20,29 @@ class MyPassViewModel @Inject constructor(
     private val _myPass = MutableLiveData<List<PassListItem>>()
     val myPass: LiveData<List<PassListItem>> = _myPass
 
+    private val _activateMyPass = MutableLiveData<Pass>()
+    val activateMyPass: LiveData<Pass> = _activateMyPass
+
+    private var _activatePassPos: Int = -1
+
     fun getAllPass() {
         viewModelScope.launch {
             passRepository.getMyPass()
                 .collect { _myPass.value = it }
         }
+    }
+
+    fun activateMyPass(pos: Int, pass: Pass) {
+        viewModelScope.launch {
+            passRepository.activateMyPass(pass)
+                .collect {
+                    _activatePassPos = pos
+                    _activateMyPass.value = it
+                }
+        }
+    }
+
+    fun getActivatePassPos(): Int {
+        return _activatePassPos
     }
 }

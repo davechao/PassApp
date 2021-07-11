@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.migo.migoapp.R
 import com.migo.migoapp.model.db.vo.Pass
 import com.migo.migoapp.ui.viewholder.PassViewHolder
+import com.migo.migoapp.widget.utility.GeneralUtils
 
 class StorePassAdapter(
     private val passes: List<Pass>,
@@ -25,7 +26,10 @@ class StorePassAdapter(
         holder.passPrice.text = pass.price
         holder.passBtn.also {
             it.text = holder.passBtn.context.getString(R.string.buy)
-            it.setOnClickListener { funcListener.onBuyClick(pass) }
+            it.setOnClickListener {
+                pass.id = GeneralUtils.generateId()
+                funcListener.onBuyClick(pass)
+            }
         }
     }
 

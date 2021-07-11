@@ -17,17 +17,17 @@ class StoreViewModel @Inject constructor(
     private val passRepository: PassRepository
 ) : BaseViewModel() {
 
-    private val _savePass = MutableLiveData<Nothing>()
-    val savePass: LiveData<Nothing> = _savePass
+    private val _buyPass = MutableLiveData<Pass>()
+    val buyPass: LiveData<Pass> = _buyPass
 
     fun getStorePass(): ArrayList<PassListItem> {
         return passRepository.fetchStorePass()
     }
 
-    fun savePass(pass: Pass) {
+    fun buyPass(pass: Pass) {
         viewModelScope.launch {
-            passRepository.savePass(pass)
-                .collect { _savePass.value = it }
+            passRepository.buyPass(pass)
+                .collect { _buyPass.value = it }
         }
     }
 

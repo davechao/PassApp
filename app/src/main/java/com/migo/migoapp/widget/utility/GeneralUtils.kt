@@ -20,4 +20,22 @@ object GeneralUtils {
     fun getDateTime(date: Date): String {
         return formatter.format(date)
     }
+
+    fun getExpireTimeByDay(date: Date): Date {
+        val calendar = Calendar.getInstance()
+        calendar.time = date
+        calendar.add(Calendar.DATE, 1)
+        calendar.set(Calendar.HOUR_OF_DAY, 23)
+        calendar.set(Calendar.MINUTE, 59)
+        calendar.set(Calendar.SECOND, 59)
+        calendar.set(Calendar.MILLISECOND, 0)
+        return calendar.time
+    }
+
+    fun getExpireTimeByHour(date: Date): Date {
+        val calendar = Calendar.getInstance()
+        calendar.time = date
+        calendar.add(Calendar.HOUR_OF_DAY, 1)
+        return calendar.time
+    }
 }

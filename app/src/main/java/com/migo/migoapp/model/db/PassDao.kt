@@ -13,5 +13,5 @@ interface PassDao {
     fun insertPass(pass: Pass)
 
     @Update
-    fun update(pass: Pass)
+    fun updatePass(pass: Pass)
 }

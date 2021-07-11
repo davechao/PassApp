@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Store</string>
+    <string name="app_name">Migo</string>
 
     <string name="network_status_title">Network Status:</string>
     <string name="network_status_message">Network Message:</string>

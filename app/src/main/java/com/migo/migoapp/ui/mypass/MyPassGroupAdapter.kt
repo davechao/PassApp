@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.migo.migoapp.R
+import com.migo.migoapp.model.emuns.PassTitleType
 import com.migo.migoapp.model.vo.PassListItem
 import com.migo.migoapp.ui.viewholder.PassGroupViewHolder
 
@@ -22,7 +23,7 @@ class MyPassGroupAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val passListItem = passGroup[position]
         holder as PassGroupViewHolder
-        holder.groupTitle.text = passListItem.title
+        holder.groupTitle.text = passListItem.title.value
 
         holder.groupRecyclerView.also {
             it.setHasFixedSize(true)

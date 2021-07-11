@@ -27,6 +27,7 @@ class MyPassAdapter(
             it.text = holder.passBtn.context.getString(R.string.activate)
             it.setOnClickListener { funcListener.onActivateClick(pass) }
         }
+        holder.passLayout.setOnClickListener { funcListener.onDetailClick(pass) }
     }
 
     override fun getItemCount(): Int {

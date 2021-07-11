@@ -42,8 +42,12 @@ class MyPassFragment : BaseFragment() {
 
     private val myPassFuncListener by lazy {
         MyPassFuncListener(
-            onActivateClick = {},
-            onDetailClick = {}
+            onActivateClick = {
+                Timber.d("@@onActivateClick...")
+            },
+            onDetailClick = {
+                Timber.d("@@onDetailClick...")
+            }
         )
     }
 }

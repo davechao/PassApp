@@ -3,6 +3,7 @@ package com.migo.migoapp.model.repository
 import com.migo.migoapp.model.db.AppDb
 import com.migo.migoapp.model.db.PassDao
 import com.migo.migoapp.model.db.vo.Pass
+import com.migo.migoapp.model.emuns.PassTitleType
 import com.migo.migoapp.model.emuns.PassType
 import com.migo.migoapp.model.vo.PassListItem
 import kotlinx.coroutines.Dispatchers
@@ -55,8 +56,8 @@ class PassRepository constructor(db: AppDb) {
         )
 
         val passes = arrayListOf<PassListItem>()
-        passes.add(PassListItem("DAY PASS", dayPasses))
-        passes.add(PassListItem("HOUR PASS", hourPasses))
+        passes.add(PassListItem(PassTitleType.DAY, dayPasses))
+        passes.add(PassListItem(PassTitleType.HOUR, hourPasses))
 
         return passes
     }
@@ -76,11 +77,11 @@ class PassRepository constructor(db: AppDb) {
             }
 
             if (dayPasses.isNotEmpty()) {
-                passes.add(PassListItem("DAY PASS", dayPasses))
+                passes.add(PassListItem(PassTitleType.DAY, dayPasses))
             }
 
             if (hourPasses.isNotEmpty()) {
-                passes.add(PassListItem("HOUR PASS", hourPasses))
+                passes.add(PassListItem(PassTitleType.HOUR, hourPasses))
             }
 
             emit(passes)

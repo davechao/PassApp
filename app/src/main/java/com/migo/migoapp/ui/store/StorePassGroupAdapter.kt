@@ -22,7 +22,7 @@ class StorePassGroupAdapter(
         val passListItem = passGroup[position]
 
         holder as PassGroupViewHolder
-        holder.groupTitle.text = passListItem.title
+        holder.groupTitle.text = passListItem.title.value
 
         holder.groupRecyclerView.also {
             it.setHasFixedSize(true)

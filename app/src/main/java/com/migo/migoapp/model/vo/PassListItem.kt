@@ -1,8 +1,9 @@
 package com.migo.migoapp.model.vo
 
 import com.migo.migoapp.model.db.vo.Pass
+import com.migo.migoapp.model.emuns.PassTitleType
 
 data class PassListItem(
-    val title: String = "",
+    val title: PassTitleType,
     val passes: List<Pass> = arrayListOf()
 )

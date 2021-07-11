@@ -12,5 +12,6 @@
 
     <string name="buy">BUY</string>
     <string name="buy_success">Purchase successful</string>
+    <string name="activate">ACTIVATE</string>
 
 </resources>

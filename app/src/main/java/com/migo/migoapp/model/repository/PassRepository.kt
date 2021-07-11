@@ -3,6 +3,7 @@ package com.migo.migoapp.model.repository
 import com.migo.migoapp.model.db.AppDb
 import com.migo.migoapp.model.db.PassDao
 import com.migo.migoapp.model.db.vo.Pass
+import com.migo.migoapp.model.emuns.PassType
 import com.migo.migoapp.model.vo.PassListItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -15,13 +16,13 @@ class PassRepository constructor(db: AppDb) {
 
     fun fetchStorePass(): ArrayList<PassListItem> {
         val dayPasses = arrayListOf<Pass>()
-        dayPasses.add(Pass(name = "1 Day Pass", price = "Rp 2.000"))
-        dayPasses.add(Pass(name = "3 Day Pass", price = "Rp 5.000"))
-        dayPasses.add(Pass(name = "7 Day Pass", price = "Rp 10.000"))
+        dayPasses.add(Pass(name = "1 Day Pass", price = "Rp 2.000", type = PassType.DAY))
+        dayPasses.add(Pass(name = "3 Day Pass", price = "Rp 5.000", type = PassType.DAY))
+        dayPasses.add(Pass(name = "7 Day Pass", price = "Rp 10.000", type = PassType.DAY))
 
         val hourPasses = arrayListOf<Pass>()
-        hourPasses.add(Pass(name = "1 Hour Pass", price = "Rp 500"))
-        hourPasses.add(Pass(name = "8 Hour Pass", price = "Rp 1.000"))
+        hourPasses.add(Pass(name = "1 Hour Pass", price = "Rp 500", type = PassType.HOUR))
+        hourPasses.add(Pass(name = "8 Hour Pass", price = "Rp 1.000", type = PassType.HOUR))
 
         val passes = arrayListOf<PassListItem>()
         passes.add(PassListItem("DAY PASS", dayPasses))

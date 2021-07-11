@@ -43,5 +43,4 @@ class StoreFragment : BaseFragment() {
             }
         )
     }
-
 }

@@ -10,7 +10,7 @@ import com.migo.migoapp.model.db.vo.Pass
 interface PassDao {
 
     @Query("SELECT * FROM pass")
-    fun getAll(): List<Pass>
+    fun getAllPass(): List<Pass>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertPass(pass: Pass)

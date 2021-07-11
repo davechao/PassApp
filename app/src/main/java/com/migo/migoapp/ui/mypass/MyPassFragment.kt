@@ -19,9 +19,10 @@ class MyPassFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val myPassGroupAdapter = MyPassGroupAdapter(myPassFuncListener)
         rv_my_pass.also {
             it.setHasFixedSize(true)
-            it.adapter = MyPassGroupAdapter(myPassFuncListener)
+            it.adapter = myPassGroupAdapter
         }
 
         mainViewModel?.isFetch?.observe(viewLifecycleOwner, {
@@ -30,10 +31,8 @@ class MyPassFragment : BaseFragment() {
             }
         })
 
-        viewModel.allPass.observe(viewLifecycleOwner, {
-            it.forEach { pass ->
-                Timber.d("@@pass: $pass")
-            }
+        viewModel.myPass.observe(viewLifecycleOwner, {
+            myPassGroupAdapter.setupData(it)
         })
     }
 

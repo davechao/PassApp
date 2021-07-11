@@ -6,6 +6,7 @@
     <string name="network_status_disconnect">Network is not available</string>
     <string name="network_status_connecting">Network is connecting</string>
     <string name="network_status_waiting">Waiting</string>
+    <string name="menu_test">Test API</string>
 
     <string name="tab_store">Store</string>
     <string name="tab_wallet">Wallet</string>

@@ -2,6 +2,7 @@ package com.migo.migoapp.ui.home
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
@@ -11,6 +12,7 @@ import com.migo.migoapp.model.api.ApiResult.*
 import com.migo.migoapp.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment() {
@@ -26,6 +28,12 @@ class HomeFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        tv_title.text = getString(R.string.app_name)
+        toolbar?.also {
+            it.inflateMenu(R.menu.menu_home)
+            it.setOnMenuItemClickListener(onMenuItemClickListener)
+        }
 
         viewpager.adapter = HomeViewPagerAdapter(this)
         viewpager.registerOnPageChangeCallback(onPageChangeCallback)
@@ -66,13 +74,17 @@ class HomeFragment : BaseFragment() {
         return R.layout.fragment_home
     }
 
-    private val onPageChangeCallback =
-        object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                if (position == 1) {
-                    mainViewModel?.setupFetchData(true)
-                }
+    private val onPageChangeCallback = object : ViewPager2.OnPageChangeCallback() {
+        override fun onPageSelected(position: Int) {
+            super.onPageSelected(position)
+            if (position == 1) {
+                mainViewModel?.setupFetchData(true)
             }
         }
+    }
+
+    private val onMenuItemClickListener = Toolbar.OnMenuItemClickListener {
+        viewModel.getApiStatus()
+        false
+    }
 }

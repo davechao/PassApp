@@ -3,6 +3,7 @@ package com.migo.migoapp.model.repository
 import com.migo.migoapp.model.db.AppDb
 import com.migo.migoapp.model.db.PassDao
 import com.migo.migoapp.model.db.vo.Pass
+import com.migo.migoapp.model.emuns.PassStatus
 import com.migo.migoapp.model.emuns.PassTitleType
 import com.migo.migoapp.model.emuns.PassType
 import com.migo.migoapp.model.vo.PassListItem
@@ -21,7 +22,7 @@ class PassRepository constructor(db: AppDb) {
             Pass(
                 name = "1 Day Pass",
                 price = "Rp 2.000",
-                type = PassType.DAY
+                type = PassType.DAY,
             )
         )
         dayPasses.add(

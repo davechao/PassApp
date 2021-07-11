@@ -5,9 +5,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.migo.migoapp.model.db.vo.Pass
 
 @Database(entities = [Pass::class], version = 1)
+@TypeConverters(
+    DateTimeConverter::class,
+)
 abstract class AppDb : RoomDatabase() {
 
     companion object {

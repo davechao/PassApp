@@ -3,9 +3,9 @@ package com.migo.migoapp.model.db.vo
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.TypeConverters
-import com.migo.migoapp.model.db.PassTypeConverter
+import com.migo.migoapp.model.emuns.PassStatus
 import com.migo.migoapp.model.emuns.PassType
+import java.util.*
 
 @Entity(tableName = "pass")
 data class Pass(
@@ -19,10 +19,17 @@ data class Pass(
     var price: String? = null,
 
     @ColumnInfo(name = "type")
-    @TypeConverters(PassTypeConverter::class)
     var type: PassType? = null,
 
-    @ColumnInfo(name = "isActivate")
-    var isActivate: Boolean = false
+    @ColumnInfo(name = "status")
+    var status: PassStatus = PassStatus.ACTIVATE,
 
+    @ColumnInfo(name = "activateDate")
+    var activateDate: Date = Date(),
+
+    @ColumnInfo(name = "activatedDate")
+    var activatedDate: Date? = null,
+
+    @ColumnInfo(name = "expireDate")
+    var expireDate: Date? = null,
 )

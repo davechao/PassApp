@@ -28,6 +28,7 @@ class MyPassAdapter(
 
         if (pass.isActivate) {
             holder.passBtn.text = holder.passBtn.context.getString(R.string.activated)
+            holder.passBtn.isEnabled = false
         } else {
             holder.passBtn.text = holder.passBtn.context.getString(R.string.activate)
         }

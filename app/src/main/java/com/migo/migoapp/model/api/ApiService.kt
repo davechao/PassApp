@@ -7,6 +7,6 @@ import retrofit2.http.GET
 interface ApiService {
 
     @GET("/status")
-    suspend fun getPublicStatus(): Response<ApiStatusItem>
+    suspend fun getStatus(): Response<ApiStatusItem>
 
 }

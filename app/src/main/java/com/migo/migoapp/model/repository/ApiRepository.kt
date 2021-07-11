@@ -12,7 +12,7 @@ class ApiRepository constructor(private val apiService: ApiService) {
 
     suspend fun getApiStatus(): Flow<ApiStatusItem?> {
         return flow {
-            val result = apiService.getPublicStatus()
+            val result = apiService.getStatus()
             if (!result.isSuccessful) throw HttpException(result)
             emit(result.body())
         }.flowOn(Dispatchers.IO)

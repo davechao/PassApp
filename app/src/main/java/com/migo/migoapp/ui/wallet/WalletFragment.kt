@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import com.migo.migoapp.R
 import com.migo.migoapp.ui.base.BaseFragment
+import com.migo.migoapp.ui.dialog.PassDetailDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_wallet.*
 import timber.log.Timber
@@ -55,7 +56,10 @@ class WalletFragment : BaseFragment() {
                 viewModel.activateMyPass(groupPos, pos, pass)
             },
             onDetailClick = {
-                Timber.d("@@onDetailClick...")
+                PassDetailDialogFragment.newInstance(it).show(
+                    requireActivity().supportFragmentManager,
+                    PassDetailDialogFragment::class.java.simpleName
+                )
             }
         )
     }

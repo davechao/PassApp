@@ -16,6 +16,11 @@
     <string name="activate">ACTIVATE</string>
     <string name="activated">ACTIVATED</string>
     <string name="expire">EXPIRE</string>
-    <string name="activate_success">Activate successful</string>
+
+    <string name="pass_status">Status:</string>
+    <string name="pass_purchase_date">Purchase Date:</string>
+    <string name="pass_activated_date">Activated Date:</string>
+    <string name="pass_expire_date">Expire Date:</string>
+    <string name="ok">OK</string>
 
 </resources>

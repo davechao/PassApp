@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
+import com.migo.migoapp.R
 import com.migo.migoapp.ui.main.MainViewModel
 
 abstract class BaseDialogFragment : DialogFragment() {
@@ -40,18 +41,19 @@ abstract class BaseDialogFragment : DialogFragment() {
 
     override fun onStart() {
         super.onStart()
-        if (dialog != null) {
-            if (isFullLayout()) {
-                dialog!!.window!!.setLayout(
-                    WindowManager.LayoutParams.MATCH_PARENT,
-                    WindowManager.LayoutParams.MATCH_PARENT
-                )
-                dialog!!.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            } else {
-                val widthPixels = (resources.displayMetrics.widthPixels * 0.8).toInt()
-                dialog!!.window!!.setLayout(widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT)
-                dialog!!.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            }
+        if (isFullLayout()) {
+            val window = dialog?.window
+            window?.setWindowAnimations(R.style.DialogNoAnimation)
+            window?.setLayout(
+                WindowManager.LayoutParams.MATCH_PARENT,
+                WindowManager.LayoutParams.MATCH_PARENT
+            )
+            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        } else {
+            val window = dialog?.window
+            val widthPixels = (resources.displayMetrics.widthPixels * 0.8).toInt()
+            window?.setLayout(widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT)
+            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         }
     }
 

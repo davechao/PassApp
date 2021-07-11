@@ -1,13 +1,16 @@
 package com.migo.migoapp.model.db.vo
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.migo.migoapp.model.emuns.PassStatus
 import com.migo.migoapp.model.emuns.PassType
+import kotlinx.android.parcel.Parcelize
 import java.util.*
 
 @Entity(tableName = "pass")
+@Parcelize
 data class Pass(
     @PrimaryKey
     var id: String = "",
@@ -32,4 +35,4 @@ data class Pass(
 
     @ColumnInfo(name = "expireDate")
     var expireDate: Date? = null,
-)
+): Parcelable

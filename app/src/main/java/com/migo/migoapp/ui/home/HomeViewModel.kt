@@ -20,9 +20,6 @@ class HomeViewModel @Inject constructor(
     private val _apiStatus = MutableLiveData<ApiResult<ApiStatusItem>>()
     val apiStatus: LiveData<ApiResult<ApiStatusItem>> = _apiStatus
 
-//    private val _allPass = MutableLiveData<List<Pass>>()
-//    val allPass: LiveData<List<Pass>> = _allPass
-
     fun getApiStatus() {
         viewModelScope.launch {
             apiRepository.getApiStatus()
@@ -32,11 +29,4 @@ class HomeViewModel @Inject constructor(
                 .collect { _apiStatus.value = ApiResult.success(it) }
         }
     }
-
-//    fun getAllPass() {
-//        viewModelScope.launch {
-//            passRepository.getAllPass()
-//                .collect { _allPass.value = it }
-//        }
-//    }
 }

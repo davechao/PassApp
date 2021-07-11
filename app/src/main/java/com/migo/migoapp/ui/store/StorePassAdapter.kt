@@ -1,14 +1,11 @@
 package com.migo.migoapp.ui.store
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.migo.migoapp.R
 import com.migo.migoapp.model.db.vo.Pass
-import kotlinx.android.synthetic.main.item_pass.view.*
+import com.migo.migoapp.ui.viewholder.PassViewHolder
 
 class StorePassAdapter(
     private val passes: List<Pass>,
@@ -28,19 +25,11 @@ class StorePassAdapter(
         holder.passPrice.text = pass.price
         holder.passBtn.also {
             it.text = holder.passBtn.context.getString(R.string.buy)
-            it.setOnClickListener {
-                funcListener.onBuyClick()
-            }
+            it.setOnClickListener { funcListener.onBuyClick(pass) }
         }
     }
 
     override fun getItemCount(): Int {
         return passes.size
-    }
-
-    class PassViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var passName: TextView = itemView.tv_pass_name
-        var passPrice: TextView = itemView.tv_pass_price
-        var passBtn: Button = itemView.btn_action
     }
 }

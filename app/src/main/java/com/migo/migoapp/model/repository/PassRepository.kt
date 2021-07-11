@@ -13,13 +13,6 @@ class PassRepository constructor(db: AppDb) {
 
     private val passDao: PassDao = db.passDao()
 
-    suspend fun getAllPass(): Flow<List<Pass>> {
-        return flow {
-            val result = passDao.getAll()
-            emit(result)
-        }.flowOn(Dispatchers.IO)
-    }
-
     fun fetchStorePass(): ArrayList<PassListItem> {
         val dayPasses = arrayListOf<Pass>()
         dayPasses.add(Pass(name = "1 Day Pass", price = "Rp 2.000"))
@@ -35,5 +28,19 @@ class PassRepository constructor(db: AppDb) {
         passes.add(PassListItem("HOUR PASS", hourPasses))
 
         return passes
+    }
+
+    suspend fun getAllPass(): Flow<List<Pass>> {
+        return flow {
+            val result = passDao.getAll()
+            emit(result)
+        }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun savePass(pass: Pass): Flow<Nothing?> {
+        return flow {
+            passDao.insertPass(pass)
+            emit(null)
+        }.flowOn(Dispatchers.IO)
     }
 }

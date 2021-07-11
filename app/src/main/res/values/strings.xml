@@ -11,5 +11,6 @@
     <string name="tab_my_pass">My Pass</string>
 
     <string name="buy">BUY</string>
+    <string name="buy_success">Purchase successful</string>
 
 </resources>

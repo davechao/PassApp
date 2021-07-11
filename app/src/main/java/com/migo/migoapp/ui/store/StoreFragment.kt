@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import com.migo.migoapp.R
 import com.migo.migoapp.ui.base.BaseFragment
+import com.migo.migoapp.widget.utility.GeneralUtils
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_store.*
 import timber.log.Timber
@@ -19,8 +20,15 @@ class StoreFragment : BaseFragment() {
 
         rv_shop.also {
             it.setHasFixedSize(true)
-            it.adapter = StorePassGroupAdapter(viewModel.getStorePass(), storeFuncListener)
+            it.adapter = StorePassGroupAdapter(
+                viewModel.getStorePass(),
+                storeFuncListener
+            )
         }
+
+        viewModel.savePass.observe(viewLifecycleOwner, {
+            GeneralUtils.showToast(requireContext(), getString(R.string.buy_success))
+        })
     }
 
     override fun getLayoutId(): Int {
@@ -30,7 +38,8 @@ class StoreFragment : BaseFragment() {
     private val storeFuncListener by lazy {
         StoreFuncListener(
             onBuyClick = {
-                Timber.e("@@Buy...")
+                it.id = GeneralUtils.generateId()
+                viewModel.savePass(it)
             }
         )
     }

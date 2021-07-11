@@ -15,12 +15,15 @@ class MyPassFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Timber.d("@@MyPassFragment...")
 
         mainViewModel?.isFetch?.observe(viewLifecycleOwner, {
             if (it) {
-                Timber.d("@@isFetch...")
+                viewModel.getAllPass()
             }
+        })
+
+        viewModel.allPass.observe(viewLifecycleOwner, {
+            Timber.d("@@pass size: ${it.size}")
         })
     }
 

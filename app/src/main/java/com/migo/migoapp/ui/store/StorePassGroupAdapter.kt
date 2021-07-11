@@ -1,13 +1,11 @@
 package com.migo.migoapp.ui.store
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.migo.migoapp.R
 import com.migo.migoapp.model.vo.PassListItem
-import kotlinx.android.synthetic.main.item_pass_group.view.*
+import com.migo.migoapp.ui.viewholder.PassGroupViewHolder
 
 class StorePassGroupAdapter(
     private val passGroup: List<PassListItem>,
@@ -34,10 +32,5 @@ class StorePassGroupAdapter(
 
     override fun getItemCount(): Int {
         return passGroup.size
-    }
-
-    class PassGroupViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var groupTitle: TextView = itemView.tv_group_title
-        var groupRecyclerView: RecyclerView = itemView.rv_group
     }
 }

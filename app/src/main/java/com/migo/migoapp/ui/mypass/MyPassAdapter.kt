@@ -8,6 +8,7 @@ import com.migo.migoapp.model.db.vo.Pass
 import com.migo.migoapp.ui.viewholder.PassViewHolder
 
 class MyPassAdapter(
+    private val groupPos: Int,
     private val passes: ArrayList<Pass>,
     private val funcListener: MyPassFuncListener
 )  : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -33,7 +34,7 @@ class MyPassAdapter(
 
         holder.passBtn.setOnClickListener {
             pass.isActivate = true
-            funcListener.onActivateClick(position, pass)
+            funcListener.onActivateClick(groupPos, position, pass)
         }
 
         holder.passLayout.setOnClickListener { funcListener.onDetailClick(pass) }

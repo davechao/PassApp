@@ -24,6 +24,7 @@ class MyPassViewModel @Inject constructor(
     val activateMyPass: LiveData<Pass> = _activateMyPass
 
     private var _activatePassPos: Int = -1
+    private var _activateGroupPos: Int = -1
 
     fun getAllPass() {
         viewModelScope.launch {
@@ -32,10 +33,11 @@ class MyPassViewModel @Inject constructor(
         }
     }
 
-    fun activateMyPass(pos: Int, pass: Pass) {
+    fun activateMyPass(groupPos: Int, pos: Int, pass: Pass) {
         viewModelScope.launch {
             passRepository.activateMyPass(pass)
                 .collect {
+                    _activateGroupPos = groupPos
                     _activatePassPos = pos
                     _activateMyPass.value = it
                 }
@@ -44,5 +46,9 @@ class MyPassViewModel @Inject constructor(
 
     fun getActivatePassPos(): Int {
         return _activatePassPos
+    }
+
+    fun getActivateGroupPos(): Int {
+        return _activateGroupPos
     }
 }

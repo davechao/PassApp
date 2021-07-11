@@ -39,7 +39,9 @@ class MyPassFragment : BaseFragment() {
         })
 
         viewModel.activateMyPass.observe(viewLifecycleOwner, {
-            myPassGroupAdapter.updatePassStatus(viewModel.getActivatePassPos(), it)
+            myPassGroupAdapter.updatePassStatus(
+                viewModel.getActivateGroupPos(), viewModel.getActivatePassPos(), it
+            )
         })
     }
 
@@ -49,8 +51,8 @@ class MyPassFragment : BaseFragment() {
 
     private val myPassFuncListener by lazy {
         MyPassFuncListener(
-            onActivateClick = { pos, pass ->
-                viewModel.activateMyPass(pos, pass)
+            onActivateClick = { groupPos, pos, pass ->
+                viewModel.activateMyPass(groupPos, pos, pass)
             },
             onDetailClick = {
                 Timber.d("@@onDetailClick...")

@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "pass")
 data class Pass(
-    @PrimaryKey var id: String,
+    @PrimaryKey var id: String = "",
     @ColumnInfo(name = "name") var name: String? = null,
     @ColumnInfo(name = "price") var price: String? = null
 )

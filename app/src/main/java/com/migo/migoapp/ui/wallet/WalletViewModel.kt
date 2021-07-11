@@ -1,4 +1,4 @@
-package com.migo.migoapp.ui.mypass
+package com.migo.migoapp.ui.wallet
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MyPassViewModel @Inject constructor(
+class WalletViewModel @Inject constructor(
     private val passRepository: PassRepository
 ) : BaseViewModel() {
 

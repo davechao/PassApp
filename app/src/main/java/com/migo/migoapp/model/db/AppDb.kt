@@ -9,9 +9,7 @@ import androidx.room.TypeConverters
 import com.migo.migoapp.model.db.vo.Pass
 
 @Database(entities = [Pass::class], version = 1)
-@TypeConverters(
-    DateTimeConverter::class,
-)
+@TypeConverters(DateTimeConverter::class)
 abstract class AppDb : RoomDatabase() {
 
     companion object {

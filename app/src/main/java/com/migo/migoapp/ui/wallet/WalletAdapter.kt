@@ -1,4 +1,4 @@
-package com.migo.migoapp.ui.mypass
+package com.migo.migoapp.ui.wallet
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,10 +9,10 @@ import com.migo.migoapp.model.emuns.PassStatus
 import com.migo.migoapp.ui.viewholder.PassViewHolder
 import java.util.*
 
-class MyPassAdapter(
+class WalletAdapter(
     private val groupPos: Int,
     private val passes: ArrayList<Pass>,
-    private val funcListener: MyPassFuncListener
+    private val funcListener: WalletFuncListener
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Migo</string>
+    <string name="app_name">Store</string>
 
     <string name="network_status_title">Network Status:</string>
     <string name="network_status_message">Network Message:</string>
@@ -8,9 +8,9 @@
     <string name="network_status_waiting">Waiting</string>
 
     <string name="tab_store">Store</string>
-    <string name="tab_my_pass">My Pass</string>
+    <string name="tab_wallet">Wallet</string>
 
-    <string name="empty_pass">Empty Pass</string>
+    <string name="empty_wallet">Empty Wallet</string>
     <string name="buy">BUY</string>
     <string name="purchase">Purchase</string>
     <string name="activate">ACTIVATE</string>

@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_my_pass"
+        android:id="@+id/rv_wallet"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="4dp"
@@ -16,10 +16,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_empty_pass"
+        android:id="@+id/tv_empty_wallet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/empty_pass"
+        android:text="@string/empty_wallet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

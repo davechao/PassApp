@@ -18,7 +18,7 @@ class HomeFragment : BaseFragment() {
     companion object {
         val tabs = arrayListOf(
             App.self.getString(R.string.tab_store),
-            App.self.getString(R.string.tab_my_pass),
+            App.self.getString(R.string.tab_wallet),
         )
     }
 

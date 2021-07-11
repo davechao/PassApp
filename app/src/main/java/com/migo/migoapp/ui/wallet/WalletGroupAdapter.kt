@@ -1,4 +1,4 @@
-package com.migo.migoapp.ui.mypass
+package com.migo.migoapp.ui.wallet
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,12 +8,12 @@ import com.migo.migoapp.model.db.vo.Pass
 import com.migo.migoapp.model.vo.PassListItem
 import com.migo.migoapp.ui.viewholder.PassGroupViewHolder
 
-class MyPassGroupAdapter(
-    private val funcListener: MyPassFuncListener
+class WalletGroupAdapter(
+    private val funcListener: WalletFuncListener
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var passGroup: List<PassListItem> = arrayListOf()
-    private var myPassAdapterMap = hashMapOf<Int, MyPassAdapter>()
+    private var walletAdapterMap = hashMapOf<Int, WalletAdapter>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val mView = LayoutInflater.from(parent.context)
@@ -23,14 +23,14 @@ class MyPassGroupAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val passListItem = passGroup[position]
-        val myPassAdapter = MyPassAdapter(position, passListItem.passes, funcListener)
-        myPassAdapterMap[position] = myPassAdapter
+        val walletAdapter = WalletAdapter(position, passListItem.passes, funcListener)
+        walletAdapterMap[position] = walletAdapter
 
         holder as PassGroupViewHolder
         holder.groupTitle.text = passListItem.title.value
         holder.groupRecyclerView.also {
             it.setHasFixedSize(true)
-            it.adapter = myPassAdapter
+            it.adapter = walletAdapter
         }
     }
 
@@ -44,6 +44,6 @@ class MyPassGroupAdapter(
     }
 
     fun updatePassStatus(groupPod: Int, passPos: Int, pass: Pass) {
-        myPassAdapterMap[groupPod]?.updatePassStatus(passPos, pass)
+        walletAdapterMap[groupPod]?.updatePassStatus(passPos, pass)
     }
 }

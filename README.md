@@ -1,4 +1,4 @@
-# PassApp
+# Pass App
 
 A pass store application.
 
